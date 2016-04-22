@@ -1,3 +1,6 @@
+/*:
+ ### UIBezierPath를 이용해서 SKShapeNode를 만들 수 있다.
+ */
 import UIKit
 import SpriteKit
 

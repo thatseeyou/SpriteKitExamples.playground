@@ -1,3 +1,6 @@
+/*:
+ ### SKEffectNode의 자식들에게 CIFilter를 적용할 수 있다.
+ */
 import UIKit
 import SpriteKit
 

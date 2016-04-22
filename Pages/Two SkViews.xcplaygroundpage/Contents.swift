@@ -1,3 +1,9 @@
+/*:
+ ### 2개의 SKView, 1개의 UIView(UILabel)가 동시에 화면에 표시된다.
+ - SKView도 UIView
+ - SKView는 UIImageView와 같이 view hierarchy를 구성하게 된다.
+ - SKView와 SKScene의 크기가 다르기 때문에 scaleMode에 따른 확대/축소가 발생하고 넘치거나 부족한 경우가 발생할 수도 있다.
+ */
 import UIKit
 import SpriteKit
 

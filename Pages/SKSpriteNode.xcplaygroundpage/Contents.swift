@@ -1,3 +1,7 @@
+/*:
+ ### SKView 크기에 맞는 SKScene을 추가한다.
+ - SKSpriteNode를 이용해서 사각형을 만든다.
+ */
 import UIKit
 import SpriteKit
 

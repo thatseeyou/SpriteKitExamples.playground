@@ -1,3 +1,6 @@
+/*:
+ ### SKScene이 전환이 될 때 효과를 줄 수 있다.
+ */
 import UIKit
 import SpriteKit
 

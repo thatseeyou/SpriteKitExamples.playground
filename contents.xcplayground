@@ -8,5 +8,7 @@
         <page name='SKEmitterNode'/>
         <page name='NoiseTexture'/>
         <page name='SKTransition'/>
+        <page name='BouncingBall'/>
+        <page name='Collision Detection'/>
     </pages>
 </playground>

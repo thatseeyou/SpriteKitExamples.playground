@@ -1,5 +1,5 @@
 /*:
- # 
+ ### Particle file을 Xcode를 통해서 생성한 후에 읽을 수 있다.
  - Fire.sks 생성하기 : File/New/File에서 Resource/Particle File 선택에서 생성 후 끌어서 Resources 폴더에 놓으면 된다.
  */
 import UIKit
