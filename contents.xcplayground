@@ -15,5 +15,8 @@
         <page name='Treadmill'/>
         <page name='Slither'/>
         <page name='Explosion'/>
+        <page name='Pick bar'/>
+        <page name='linearGravityField'/>
+        <page name='Editor'/>
     </pages>
 </playground>

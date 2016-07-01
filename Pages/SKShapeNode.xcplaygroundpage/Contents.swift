@@ -70,6 +70,7 @@ class ViewController: UIViewController {
         do {
             let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
             skView.showsFPS = true
+            //skView.showsPhysics = true
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
