@@ -6,6 +6,7 @@
         <page name='SKShapeNode'/>
         <page name='SKEffectNode'/>
         <page name='SKEmitterNode'/>
+        <page name='SKShader'/>
         <page name='NoiseTexture'/>
         <page name='SKTransition'/>
         <page name='Physics Body'/>
@@ -16,7 +17,9 @@
         <page name='Slither'/>
         <page name='Explosion'/>
         <page name='Pick bar'/>
+        <page name='Scene Editor'/>
         <page name='linearGravityField'/>
-        <page name='Editor'/>
+        <page name='dragField'/>
+        <page name='edgeChainFromPath'/>
     </pages>
 </playground>
