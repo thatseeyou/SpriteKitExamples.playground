@@ -4,7 +4,7 @@
      * bodyA.categoryBitMask & bodyB.collisionBitMask > 0 && bodyB.categoryBitMask & bodyA.collisionBitMask > 0
      * 짝충돌은 없다. 서로 충돌인 경우에만 충돌로 처리한다.
  - contactTestBitMask
-     * bodyA.contactTestBitMask & bodyB.contactTestBitMask > 0 || bodyB.contactTestBitMask & bodyA.contactTestBitMask > 0
+     * bodyA.categoryBitMask & bodyB.contactTestBitMask > 0 || bodyB.categoryBitMask & bodyA.contactTestBitMask > 0
      * 한 쪽만 조건에 맞으면 가능하다.
      * 충돌이 없는 경우에는 test는 가능하다.
  */

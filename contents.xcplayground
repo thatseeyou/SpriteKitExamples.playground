@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' auto-termination-delay='41' display-mode='raw' executeOnSourceChanges='false' timelineScrubberEnabled='true'>
+<playground version='6.0' target-platform='ios' auto-termination-delay='9.876902' display-mode='raw' executeOnSourceChanges='false' timelineScrubberEnabled='true'>
     <pages>
         <page name='Two SkViews'/>
         <page name='SKSpriteNode'/>
         <page name='SKShapeNode'/>
+        <page name='Position'/>
         <page name='SKEffectNode'/>
         <page name='SKEmitterNode'/>
         <page name='SKShader'/>
