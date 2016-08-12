@@ -19,6 +19,9 @@
  #### 회전의 중심
  - anchorPoint가 회전의 중심이 된다.
  - anchorPoint는 position에 위치하게 되므로 결국에는 position이 회전의 중심이 되는 것이다.
+ 
+ ### 자식의 위치
+ - 부모의 position이 자식 좌표의 원점이 된다. 부모의 centered가 true/false에 상관없이 position이 같다면 자식의 위치는 동일하게 된다.
  */
 import UIKit
 import SpriteKit
@@ -99,11 +102,12 @@ class GameScene: SKScene {
             let parent = rectFromPath(parent: self, position: center, rect: CGRectMake(0,0, 100, 100), centered: false, color: [#Color(colorLiteralRed: 0.7540004253387451, green: 0, blue: 0.2649998068809509, alpha: 0.5036368534482759)#])
             parent.frame
             parent.position
+
             let centerOfShape = CGPointMake(parent.frame.width / 2.0, parent.frame.height / 2.0)
             let child = circle(parent: parent, position: centerOfShape, radius: 50.0, color: [#Color(colorLiteralRed: 0.1991284191608429, green: 0.6028449535369873, blue: 0.9592232704162598, alpha: 1)#])
             child.frame
 
-            // 회전의 중심도 (0,0)
+            // 회전의 중심도 (0,0). 결국엔 positon
             let parentCopy = parent.copy() as? SKShapeNode
             parentCopy?.zRotation = 3.141592 * 45.0 / 180.0
             self.addChild(parentCopy!)
@@ -113,7 +117,12 @@ class GameScene: SKScene {
             parent.frame
             parent.position
 
-            // 회전의 중심도 center
+            // 부모의 position이 자식의 위치를 결정하기 때문에 위의 centered:false 인 경우와 동일 위치에 원이 그려진다.
+            let centerOfShape = CGPointMake(parent.frame.width / 2.0, parent.frame.height / 2.0)
+            let child = circle(parent: parent, position: centerOfShape, radius: 30.0, color: [#Color(colorLiteralRed: 1, green: 0.9999743700027466, blue: 0.9999912977218628, alpha: 1)#])
+            child.frame
+
+            // 회전의 중심도 center. 결국엔 position
             let parentCopy = parent.copy() as? SKShapeNode
             parentCopy?.zRotation = 3.141592 * 45.0 / 180.0
             self.addChild(parentCopy!)
