@@ -9,22 +9,22 @@ import UIKit
 import SpriteKit
 
 class GameScene: SKScene {
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         // Simulation 속도를 느리게 (디폴트는 1.0)
         self.physicsWorld.speed = 0.4
 
         let ball1 = SKShapeNode(circleOfRadius: 10)
         do {
-            ball1.fillColor = [#Color(colorLiteralRed: 0.7540004253387451, green: 0, blue: 0.2649998068809509, alpha: 1)#]
-            ball1.position = CGPointMake(158,400)
+            ball1.fillColor = #colorLiteral(red: 0.7540004253387451, green: 0, blue: 0.2649998068809509, alpha: 1)
+            ball1.position = CGPoint(x: 158,y: 400)
 
             ball1.physicsBody = SKPhysicsBody(circleOfRadius: 10)
         }
 
         let ball2 = SKShapeNode(circleOfRadius: 10)
         do {
-            ball2.fillColor = [#Color(colorLiteralRed: 0.9672742486000061, green: 0.8225458264350891, blue: 0.4772382378578186, alpha: 1)#]
-            ball2.position = CGPointMake(160,200)
+            ball2.fillColor = #colorLiteral(red: 0.9672742486000061, green: 0.8225458264350891, blue: 0.4772382378578186, alpha: 1)
+            ball2.position = CGPoint(x: 160,y: 200)
 
             ball2.physicsBody = SKPhysicsBody(circleOfRadius: 10)
             // 위치 고정 (회전은 가능)
@@ -42,13 +42,13 @@ class ViewController: UIViewController {
 
         // add SKView
         do {
-            let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
             skView.showsFPS = true
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
-            let scene = GameScene(size: CGSizeMake(320, 480))
-            scene.scaleMode = .AspectFit
+            let scene = GameScene(size: CGSize(width: 320, height: 480))
+            scene.scaleMode = .aspectFit
 
             skView.presentScene(scene)
             self.view.addSubview(skView)

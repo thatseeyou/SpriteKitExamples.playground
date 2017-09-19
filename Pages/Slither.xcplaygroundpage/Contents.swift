@@ -9,28 +9,28 @@ class GameScene: SKScene {
     var contentCreated = false
     let pi:CGFloat = CGFloat(M_PI)
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         if self.contentCreated != true {
             self.physicsWorld.speed = 1.0
-            self.physicsWorld.gravity = CGVectorMake(0, 0)
+            self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
 
             var prevNode : SKNode?
             for i in 0..<10 {
-                let currentNode = addBall(CGPointMake(40 + 20 * CGFloat(i), 240))
+                let currentNode = addBall(CGPoint(x: 40 + 20 * CGFloat(i), y: 240))
 
                 if let prevNode = prevNode {
                     // anchorA, anchorB의 좌표는 scene이 된다.
-                    let limitJoint = SKPhysicsJointLimit.jointWithBodyA(prevNode.physicsBody!, bodyB: currentNode.physicsBody!, anchorA: prevNode.position, anchorB: currentNode.position)
+                    let limitJoint = SKPhysicsJointLimit.joint(withBodyA: prevNode.physicsBody!, bodyB: currentNode.physicsBody!, anchorA: prevNode.position, anchorB: currentNode.position)
                     limitJoint.maxLength = 30.0
 
-                    self.physicsWorld.addJoint(limitJoint)
+                    self.physicsWorld.add(limitJoint)
                 }
 
                 prevNode = currentNode
             }
 
             // 마지막 노드 1개에만 힘을 가한다.
-            prevNode?.physicsBody?.applyForce(CGVectorMake(0, -9.8))
+            prevNode?.physicsBody?.applyForce(CGVector(dx: 0, dy: -9.8))
 
 //            let head = prevNode as! SKShapeNode
 //            do {
@@ -43,10 +43,10 @@ class GameScene: SKScene {
         }
     }
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            let location = touch.locationInNode(self)
-            let nodes = nodesAtPoint(location)
+            let location = touch.location(in: self)
+            let nodes = self.nodes(at: location)
 
             for node in nodes {
                 if node.name == "head" {
@@ -55,16 +55,16 @@ class GameScene: SKScene {
         }
     }
 
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
 
         }
     }
 
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            let location = touch.locationInNode(self)
-            let nodes = nodesAtPoint(location)
+            let location = touch.location(in: self)
+            let nodes = self.nodes(at: location)
 
             for node in nodes {
                 if node.name == "head" {
@@ -74,7 +74,7 @@ class GameScene: SKScene {
     }
 
 
-    func addBall(position:CGPoint) -> SKNode {
+    func addBall(_ position:CGPoint) -> SKNode {
         let radius = CGFloat(20.0)
 
         let ball = SKShapeNode(circleOfRadius: radius)
@@ -90,7 +90,7 @@ class GameScene: SKScene {
     }
 
     func angularImpulse() -> SKAction {
-        let waitAction = SKAction.waitForDuration(2.0)
+        let waitAction = SKAction.wait(forDuration: 2.0)
         let impulse = SKAction.applyAngularImpulse(0.7, duration: 3.0)
         let delayImpulse = SKAction.sequence([waitAction, impulse])
 
@@ -103,12 +103,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let scene = GameScene(size: CGSizeMake(320, 480))
+        let scene = GameScene(size: CGSize(width: 320, height: 480))
         do {
-            scene.scaleMode = .AspectFit
+            scene.scaleMode = .aspectFit
         }
 
-        let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+        let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
         do {
             skView.showsFPS = true
             //skView.showsNodeCount = true

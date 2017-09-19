@@ -7,7 +7,7 @@ import UIKit
 import SpriteKit
 
 class GameScene: SKScene {
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         // Simulation 속도를 느리게 (디폴트는 1.0)
         self.physicsWorld.speed = 0.4
     }
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 
         if let scene = GameScene(fileNamed:"GameScene") {
             // Configure the view.
-            let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
             skView.showsFPS = true
             skView.showsNodeCount = true
 
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             skView.ignoresSiblingOrder = true
 
             /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFit
+            scene.scaleMode = .aspectFit
 
             skView.presentScene(scene)
             self.view.addSubview(skView)

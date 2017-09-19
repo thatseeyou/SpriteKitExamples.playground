@@ -29,7 +29,7 @@ import SpriteKit
 class GameScene: SKScene {
     var contentCreated = false
 
-    func showGuide(distance:CGFloat) {
+    func showGuide(_ distance:CGFloat) {
         let maxX = frame.maxX
         let maxY = frame.maxY
 
@@ -37,27 +37,27 @@ class GameScene: SKScene {
 
         var y = distance
         repeat {
-            path.moveToPoint(CGPointMake(0, y))
-            path.addLineToPoint(CGPointMake(maxX, y))
+            path.move(to: CGPoint(x: 0, y: y))
+            path.addLine(to: CGPoint(x: maxX, y: y))
 
             y += distance
         } while(y < maxY)
 
         var x = distance
         repeat {
-            path.moveToPoint(CGPointMake(x, 0))
-            path.addLineToPoint(CGPointMake(x, maxY))
+            path.move(to: CGPoint(x: x, y: 0))
+            path.addLine(to: CGPoint(x: x, y: maxY))
 
             x += distance
         } while(x < maxX)
 
-        let shape = SKShapeNode(path: path.CGPath)
+        let shape = SKShapeNode(path: path.cgPath)
         addChild(shape)
     }
 
-    func rectFromPath(parent parent: SKNode, position: CGPoint, rect:CGRect, centered: Bool, color:SKColor) -> SKNode
+    func rectFromPath(parent: SKNode, position: CGPoint, rect:CGRect, centered: Bool, color:SKColor) -> SKNode
     {
-        let path = UIBezierPath(rect: rect).CGPath
+        let path = UIBezierPath(rect: rect).cgPath
 
         let shape = SKShapeNode(path: path, centered: centered)
         shape.position = position
@@ -69,7 +69,7 @@ class GameScene: SKScene {
         return shape
     }
 
-    func rectFromShape(parent parent: SKNode, position: CGPoint, rect:CGRect, color:SKColor) -> SKNode
+    func rectFromShape(parent: SKNode, position: CGPoint, rect:CGRect, color:SKColor) -> SKNode
     {
         let shape = SKShapeNode(rect: rect)
         shape.position = position
@@ -81,7 +81,7 @@ class GameScene: SKScene {
         return shape
     }
     
-    func circle(parent parent: SKNode, position: CGPoint, radius:CGFloat, color:SKColor) -> SKNode
+    func circle(parent: SKNode, position: CGPoint, radius:CGFloat, color:SKColor) -> SKNode
     {
         let shape = SKShapeNode(circleOfRadius: radius)
         shape.position = position
@@ -93,18 +93,18 @@ class GameScene: SKScene {
         return shape
     }
 
-    override func didMoveToView(view: SKView) {
-        let center = CGPointMake(self.frame.midX, self.frame.midY)
+    override func didMove(to view: SKView) {
+        let center = CGPoint(x: self.frame.midX, y: self.frame.midY)
 
         showGuide(50)
 
         do {
-            let parent = rectFromPath(parent: self, position: center, rect: CGRectMake(0,0, 100, 100), centered: false, color: [#Color(colorLiteralRed: 0.7540004253387451, green: 0, blue: 0.2649998068809509, alpha: 0.5036368534482759)#])
+            let parent = rectFromPath(parent: self, position: center, rect: CGRect(x: 0,y: 0, width: 100, height: 100), centered: false, color: #colorLiteral(red: 0.7540004253387451, green: 0, blue: 0.2649998068809509, alpha: 0.5036368534482759))
             parent.frame
             parent.position
 
-            let centerOfShape = CGPointMake(parent.frame.width / 2.0, parent.frame.height / 2.0)
-            let child = circle(parent: parent, position: centerOfShape, radius: 50.0, color: [#Color(colorLiteralRed: 0.1991284191608429, green: 0.6028449535369873, blue: 0.9592232704162598, alpha: 1)#])
+            let centerOfShape = CGPoint(x: parent.frame.width / 2.0, y: parent.frame.height / 2.0)
+            let child = circle(parent: parent, position: centerOfShape, radius: 50.0, color: #colorLiteral(red: 0.1991284191608429, green: 0.6028449535369873, blue: 0.9592232704162598, alpha: 1))
             child.frame
 
             // 회전의 중심도 (0,0). 결국엔 positon
@@ -113,13 +113,13 @@ class GameScene: SKScene {
             self.addChild(parentCopy!)
         }
         do {
-            let parent = rectFromPath(parent: self, position: center, rect: CGRectMake(0,0, 100, 100), centered: true, color: [#Color(colorLiteralRed: 0.1431525945663452, green: 0.4145618975162506, blue: 0.7041897773742676, alpha: 0.5)#])
+            let parent = rectFromPath(parent: self, position: center, rect: CGRect(x: 0,y: 0, width: 100, height: 100), centered: true, color: #colorLiteral(red: 0.1431525945663452, green: 0.4145618975162506, blue: 0.7041897773742676, alpha: 0.5))
             parent.frame
             parent.position
 
             // 부모의 position이 자식의 위치를 결정하기 때문에 위의 centered:false 인 경우와 동일 위치에 원이 그려진다.
-            let centerOfShape = CGPointMake(parent.frame.width / 2.0, parent.frame.height / 2.0)
-            let child = circle(parent: parent, position: centerOfShape, radius: 30.0, color: [#Color(colorLiteralRed: 1, green: 0.9999743700027466, blue: 0.9999912977218628, alpha: 1)#])
+            let centerOfShape = CGPoint(x: parent.frame.width / 2.0, y: parent.frame.height / 2.0)
+            let child = circle(parent: parent, position: centerOfShape, radius: 30.0, color: #colorLiteral(red: 1, green: 0.9999743700027466, blue: 0.9999912977218628, alpha: 1))
             child.frame
 
             // 회전의 중심도 center. 결국엔 position
@@ -129,28 +129,28 @@ class GameScene: SKScene {
         }
         do {
             // centered = true 인 경우에는 path의 위치가 중요하지 않다. 아래에서 (-200, -200)은 무시된다.
-            let parent = rectFromPath(parent: self, position: center, rect: CGRectMake(-200, -200, 90, 90), centered: true, color: [#Color(colorLiteralRed: 0.6000000238418579, green: 0.4000000059604645, blue: 0.2000000029802322, alpha: 0.513604525862069)#])
+            let parent = rectFromPath(parent: self, position: center, rect: CGRect(x: -200, y: -200, width: 90, height: 90), centered: true, color: #colorLiteral(red: 0.6000000238418579, green: 0.4000000059604645, blue: 0.2000000029802322, alpha: 0.513604525862069))
             parent.frame
             parent.position
         }
         do {
-            let parent = rectFromPath(parent: self, position: center, rect: CGRectMake(-40, -40, 80, 80), centered: false, color: [#Color(colorLiteralRed: 0, green: 1, blue: 0, alpha: 0.5)#])
+            let parent = rectFromPath(parent: self, position: center, rect: CGRect(x: -40, y: -40, width: 80, height: 80), centered: false, color: #colorLiteral(red: 0, green: 1, blue: 0, alpha: 0.5))
             parent.frame
             parent.position
         }
         do {
-            let parent = rectFromShape(parent: self, position: center, rect: CGRectMake(10, 10, 70, 70), color: [#Color(colorLiteralRed: 1, green: 0.5, blue: 0, alpha: 0.5033405172413793)#])
+            let parent = rectFromShape(parent: self, position: center, rect: CGRect(x: 10, y: 10, width: 70, height: 70), color: #colorLiteral(red: 1, green: 0.5, blue: 0, alpha: 0.5033405172413793))
             parent.frame
             parent.position
         }
 
         do {
-            let centeredEllipse = SKShapeNode(ellipseOfSize: CGSizeMake(100, 50))
-            centeredEllipse.position = CGPointMake(100, 100)
+            let centeredEllipse = SKShapeNode(ellipseOf: CGSize(width: 100, height: 50))
+            centeredEllipse.position = CGPoint(x: 100, y: 100)
             addChild(centeredEllipse)
 
-            let notCenteredEllipse = SKShapeNode(ellipseInRect: CGRectMake(0, 0, 100, 50))
-            notCenteredEllipse.position = CGPointMake(100, 100)
+            let notCenteredEllipse = SKShapeNode(ellipseIn: CGRect(x: 0, y: 0, width: 100, height: 50))
+            notCenteredEllipse.position = CGPoint(x: 100, y: 100)
             addChild(notCenteredEllipse)
         }
     }
@@ -163,14 +163,14 @@ class ViewController: UIViewController {
 
         // add SKView
         do {
-            let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
             skView.showsFPS = true
             //skView.showsPhysics = true
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
-            let scene = GameScene(size: CGSizeMake(320, 480))
-            scene.scaleMode = .AspectFit
+            let scene = GameScene(size: CGSize(width: 320, height: 480))
+            scene.scaleMode = .aspectFit
 
             skView.presentScene(scene)
             self.view.addSubview(skView)

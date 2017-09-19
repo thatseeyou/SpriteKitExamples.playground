@@ -1,7 +1,7 @@
 import UIKit
 
 extension UIApplication {
-    class func topViewController(base: UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController) -> UIViewController? {
+    class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
 
         return base
     }
@@ -17,21 +17,21 @@ extension CGRect {
 var eventTraceDepth = -1
 
 public extension NSObject {
-    func enterEventTrace(funcname:String = #function, filename:String = #file) {
+    func enterEventTrace(_ funcname:String = #function, filename:String = #file) {
         eventTraceDepth += 1
 
-        let space = String(count: eventTraceDepth * 4, repeatedValue: Character(" "))
+        let space = String(repeating: " ", count: eventTraceDepth * 4)
 
-        print("\(space)--> \(self.dynamicType)(\(unsafeAddressOf(self)))::\(funcname)")
+        print("\(space)--> \(type(of: self))(\(Unmanaged.passUnretained(self).toOpaque()))::\(funcname)")
 
-        func printView(view:UIView) {
+        func printView(_ view:UIView) {
             print("\(space)    frame = \(view.frame.rectString())")
-            if view.bounds.origin != CGPointZero {
+            if view.bounds.origin != CGPoint.zero {
                 print("\(space)    bounds = \(view.bounds.rectString())")
             }
             if view.window != nil {
                 if let superview = view.superview {
-                    let rect = superview.convertRect(view.frame, toView: nil)
+                    let rect = superview.convert(view.frame, to: nil)
                     print("\(space)    screen = \(rect.rectString())")
                 }
             }
@@ -47,20 +47,20 @@ public extension NSObject {
             }
         }
     }
-    func exitEventTrace(funcname:String = #function, filename:String = #file) {
+    func exitEventTrace(_ funcname:String = #function, filename:String = #file) {
         eventTraceDepth -= 1
 //        print("<-- \(self.dynamicType)(\(unsafeAddressOf(self)))::\(funcname)")
     }
-    func logTrace(funcname:String = #function) {
-        print("\(self.dynamicType)(\(unsafeAddressOf(self)))::\(funcname) called")
+    func logTrace(_ funcname:String = #function) {
+        print("\(type(of: self))(\(Unmanaged.passUnretained(self).toOpaque()))::\(funcname) called")
     }
-    func logDebug(msg:String, funcname:String = #function) {
-        print("\(self.dynamicType)(\(unsafeAddressOf(self)))::\(funcname) \(msg)")
+    func logDebug(_ msg:String, funcname:String = #function) {
+        print("\(type(of: self))(\(Unmanaged.passUnretained(self).toOpaque()))::\(funcname) \(msg)")
     }
-    func logViewHierarchy(funcname:String = #function) {
+    func logViewHierarchy(_ funcname:String = #function) {
         if let view = UIApplication.topViewController()?.view {
             print("\n>>> View hierarcy at \(funcname)")
-            print(view.performSelector(Selector("recursiveDescription")))
+            print(view.perform(NSSelectorFromString("recursiveDescription")))
             print("<<< View hierarcy at \(funcname)\n")
         }
         else {

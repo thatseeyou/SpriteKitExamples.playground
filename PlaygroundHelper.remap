@@ -1,0 +1,69 @@
+[
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/PlaygroundHelper.swift",
+  "offset": 96,
+  "remove": 6,
+  "text": "open",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/PlaygroundHelper.swift",
+  "offset": 265,
+  "remove": 6,
+  "text": "open",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/PlaygroundHelper.swift",
+  "offset": 294,
+  "text": "_ ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/PlaygroundHelper.swift",
+  "offset": 782,
+  "remove": 5,
+  "text": "(x: ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/PlaygroundHelper.swift",
+  "offset": 792,
+  "text": "y: ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/PlaygroundHelper.swift",
+  "offset": 802,
+  "text": ": width",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/PlaygroundHelper.swift",
+  "offset": 810,
+  "text": ": height",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/PlaygroundHelper.swift",
+  "offset": 857,
+  "remove": 8,
+  "text": "y",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/PlaygroundHelper.swift",
+  "offset": 1027,
+  "remove": 14,
+  "text": "d",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/PlaygroundHelper.swift",
+  "offset": 1268,
+  "remove": 6,
+  "text": "open",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/PlaygroundHelper.swift",
+  "offset": 1305,
+  "text": "_ ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/PlaygroundHelper.swift",
+  "offset": 1457,
+  "remove": 14,
+  "text": "d",
+ }
+]

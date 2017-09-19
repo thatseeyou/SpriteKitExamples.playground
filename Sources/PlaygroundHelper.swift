@@ -3,16 +3,17 @@ Prepare for key window and live view
 */
 import Foundation
 import UIKit
-import XCPlayground
+//import XCPlayground
+import PlaygroundSupport
 
-public class PlaygroundHelper
+open class PlaygroundHelper
 {
 
 /** mimic iOS initialization
 - parameter width: width of window (default 320)
 - parameter height: height of window (default 480)
 */
-    public class func initWindow(width:CGFloat = 320.0, _ height:CGFloat = 480.0)
+    open class func initWindow(_ width:CGFloat = 320.0, _ height:CGFloat = 480.0)
     {
         /*:
         다음과 같이 하면 에러 메시지가 표시된다.
@@ -24,11 +25,12 @@ public class PlaygroundHelper
         다음과 같이 수정
         - UIApplication.sharedApplication().keyWindow!.rootViewController = ViewController()
         */
-        let window : UIWindow! = UIWindow(frame: CGRectMake(0.0, 0.0, width, height))
-        window.backgroundColor = UIColor.grayColor()
+        let window : UIWindow! = UIWindow(frame: CGRect(x: 0.0, y: 0.0, width: width, height: height))
+        window.backgroundColor = UIColor.gray
         window.makeKeyAndVisible()
-        XCPlaygroundPage.currentPage.liveView = UIApplication.sharedApplication().keyWindow!
-        print(UIApplication.sharedApplication().keyWindow!)
+//        XCPlaygroundPage.currentPage.liveView = UIApplication.shared.keyWindow!
+        PlaygroundPage.current.liveView = UIApplication.shared.keyWindow!
+        print(UIApplication.shared.keyWindow!)
     }
 
 /** make UIWindow and show viewController.view
@@ -36,10 +38,10 @@ public class PlaygroundHelper
  - parameter width: width of window (default 320)
  - parameter height: height of window (default 480)
  */
-    public class func showViewController(viewController:UIViewController, width:CGFloat = 320.0, height:CGFloat = 480.0)
+    open class func showViewController(_ viewController:UIViewController, width:CGFloat = 320.0, height:CGFloat = 480.0)
     {
         self.initWindow(width, height)
-        UIApplication.sharedApplication().keyWindow!.rootViewController = viewController
+        UIApplication.shared.keyWindow!.rootViewController = viewController
     }
 
 }

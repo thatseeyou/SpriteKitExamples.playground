@@ -1,0 +1,66 @@
+[
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Utility.swift",
+  "offset": 19,
+  "remove": 6,
+  "text": "open",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Utility.swift",
+  "offset": 164,
+  "remove": 6,
+  "text": "open",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Utility.swift",
+  "offset": 201,
+  "text": "_ ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Utility.swift",
+  "offset": 260,
+  "remove": 1,
+  "text": "D",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Utility.swift",
+  "offset": 268,
+  "remove": 2,
+  "text": "T",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Utility.swift",
+  "offset": 273,
+  "remove": 21,
+  "text": ".now() + Double(I",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Utility.swift",
+  "offset": 338,
+  "text": " / Double(NSEC_PER_SEC)",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Utility.swift",
+  "offset": 356,
+  "remove": 1,
+  "text": "D",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Utility.swift",
+  "offset": 364,
+  "remove": 2,
+  "text": "Queue.main.asyncA",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Utility.swift",
+  "offset": 373,
+  "remove": 1,
+  "text": "adline: del",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Utility.swift",
+  "offset": 382,
+  "remove": 26,
+  "text": "execute:",
+ }
+]

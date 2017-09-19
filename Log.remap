@@ -1,0 +1,144 @@
+[
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 73,
+  "text": "_ ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 118,
+  "remove": 14,
+  "text": "d",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 505,
+  "text": "_ ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 618,
+  "text": "repeating: \" \", ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 644,
+  "remove": 32,
+  "text": ")",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 727,
+  "remove": 9,
+  "text": "Unmanaged.passUn",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 738,
+  "remove": 4,
+  "text": "tained",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 748,
+  "text": ".toOpaque(",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 750,
+  "text": ")",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 790,
+  "text": "_ ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 917,
+  "remove": 1,
+  "text": ".z",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1147,
+  "remove": 5,
+  "text": "t",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1166,
+  "remove": 5,
+  "text": "o",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1565,
+  "text": "_ ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1756,
+  "text": "_ ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1824,
+  "remove": 9,
+  "text": "Unmanaged.passUn",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1835,
+  "remove": 4,
+  "text": "tained",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1845,
+  "text": ".toOpaque(",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1847,
+  "text": ")",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1894,
+  "text": "_ ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1974,
+  "remove": 9,
+  "text": "Unmanaged.passUn",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1985,
+  "remove": 4,
+  "text": "tained",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1995,
+  "text": ".toOpaque(",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 1997,
+  "text": ")",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 2052,
+  "text": "_ ",
+ },
+ {
+  "file": "/Users/syoh/Development/mywork/SpriteKitExamples.playground/Sources/Log.swift",
+  "offset": 2232,
+  "remove": 9,
+  "text": "m",
+ }
+]

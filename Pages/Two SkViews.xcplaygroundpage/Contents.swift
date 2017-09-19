@@ -21,11 +21,11 @@ class GameScene: SKScene {
         self.text = text
     }
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         if self.contentCreated != true {
             self.gameScore = SKLabelNode(text: self.text)
             self.gameScore.position = CGPoint(x: 8, y: 8)
-            self.gameScore.horizontalAlignmentMode = .Left
+            self.gameScore.horizontalAlignmentMode = .left
             self.gameScore.fontSize = 48
             addChild(self.gameScore)
             self.contentCreated = true
@@ -40,13 +40,13 @@ class ViewController: UIViewController {
 
         // add SKView
         do {
-            let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
             skView.showsFPS = true
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
-            let scene = GameScene(size: CGSizeMake(300,300), text: "Scene1")
-            scene.scaleMode = .AspectFit
+            let scene = GameScene(size: CGSize(width: 300,height: 300), text: "Scene1")
+            scene.scaleMode = .aspectFit
 
             skView.presentScene(scene)
             self.view.addSubview(skView)
@@ -54,13 +54,13 @@ class ViewController: UIViewController {
 
         // add SKView
         do {
-            let skView = SKView(frame:CGRectMake(0, 0, 200, 180))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 200, height: 180))
             skView.showsFPS = true
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
-            let scene = GameScene(size: CGSizeMake(200,200), text: "Scene2")
-            scene.scaleMode = .AspectFill
+            let scene = GameScene(size: CGSize(width: 200,height: 200), text: "Scene2")
+            scene.scaleMode = .aspectFill
 
             skView.presentScene(scene)
             self.view.addSubview(skView)
@@ -68,9 +68,9 @@ class ViewController: UIViewController {
 
         // add UIView
         do {
-            let label = UILabel(frame:CGRectMake(100,100,10,10))
+            let label = UILabel(frame:CGRect(x: 100,y: 100,width: 10,height: 10))
             label.text = "I'm UILabel"
-            label.textColor = [#Color(colorLiteralRed: 0.8949507474899292, green: 0.1438436359167099, blue: 0.08480125665664673, alpha: 1)#]
+            label.textColor = #colorLiteral(red: 0.8949507474899292, green: 0.1438436359167099, blue: 0.08480125665664673, alpha: 1)
             label.sizeToFit()
 
             self.view.addSubview(label)

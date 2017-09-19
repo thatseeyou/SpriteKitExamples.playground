@@ -8,10 +8,10 @@ import SpriteKit
 class GameScene: SKScene {
     var contentCreated = false
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         if self.contentCreated != true {
-            let sprite = SKSpriteNode(color: [#Color(colorLiteralRed: 0.4931360483169556, green: 0, blue: 0.1765155345201492, alpha: 1)#], size: CGSizeMake(100, 100))
-            sprite.position = CGPointMake(100, 100)
+            let sprite = SKSpriteNode(color: #colorLiteral(red: 0.4931360483169556, green: 0, blue: 0.1765155345201492, alpha: 1), size: CGSize(width: 100, height: 100))
+            sprite.position = CGPoint(x: 100, y: 100)
             addChild(sprite)
 
             self.contentCreated = true
@@ -26,13 +26,13 @@ class ViewController: UIViewController {
 
         // add SKView
         do {
-            let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
             skView.showsFPS = true
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
-            let scene = GameScene(size: CGSizeMake(320, 480))
-            scene.scaleMode = .AspectFit
+            let scene = GameScene(size: CGSize(width: 320, height: 480))
+            scene.scaleMode = .aspectFit
 
             skView.presentScene(scene)
             self.view.addSubview(skView)

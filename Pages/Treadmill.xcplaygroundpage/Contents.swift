@@ -10,37 +10,37 @@ class GameScene: SKScene {
     var contentCreated = false
     let pi:CGFloat = CGFloat(M_PI)
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         if self.contentCreated != true {
 
             do {
-                let shape = SKShapeNode(path: makeHalfCircle().CGPath)
-                shape.strokeColor = SKColor.greenColor()
-                shape.fillColor = SKColor.redColor()
-                shape.position = CGPointMake(self.frame.midX, self.frame.midY)
+                let shape = SKShapeNode(path: makeHalfCircle().cgPath)
+                shape.strokeColor = SKColor.green
+                shape.fillColor = SKColor.red
+                shape.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
 
-                shape.physicsBody = SKPhysicsBody(polygonFromPath: makeHalfCircle().CGPath)
-                shape.physicsBody?.dynamic = true
+                shape.physicsBody = SKPhysicsBody(polygonFrom: makeHalfCircle().cgPath)
+                shape.physicsBody?.isDynamic = true
                 shape.physicsBody?.pinned = true
                 shape.physicsBody?.affectedByGravity = false
                 shape.physicsBody?.friction = 1.0
                 addChild(shape)
 
-                shape.runAction(angularImpulse())
+                shape.run(angularImpulse())
             }
 
             do {
-                let picker = SKShapeNode(rect: CGRectMake(-10.0, -30.0, 20.0, 60.0))
-                picker.position = CGPointMake(self.frame.midX, self.frame.midY - 100.0)
-                picker.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(20.0, 60.0))
+                let picker = SKShapeNode(rect: CGRect(x: -10.0, y: -30.0, width: 20.0, height: 60.0))
+                picker.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 100.0)
+                picker.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20.0, height: 60.0))
                 picker.physicsBody?.affectedByGravity = false
 
                 addChild(picker)
             }
 
-            addBall(CGPointMake(self.frame.midX, self.frame.midY))
-            addBall(CGPointMake(self.frame.midX - 40, self.frame.midY))
-            addBall(CGPointMake(self.frame.midX + 50, self.frame.midY))
+            addBall(CGPoint(x: self.frame.midX, y: self.frame.midY))
+            addBall(CGPoint(x: self.frame.midX - 40, y: self.frame.midY))
+            addBall(CGPoint(x: self.frame.midX + 50, y: self.frame.midY))
 
 
             self.physicsWorld.speed = 0.5
@@ -50,7 +50,7 @@ class GameScene: SKScene {
         }
     }
 
-    func addBall(position:CGPoint) {
+    func addBall(_ position:CGPoint) {
         let radius = CGFloat(20.0)
 
         let ball = SKShapeNode(circleOfRadius: radius)
@@ -64,8 +64,8 @@ class GameScene: SKScene {
 
         let label = SKLabelNode(text: "45")
         label.fontSize = 18.0
-        label.position = CGPointMake( 0.0, 0.0)
-        label.verticalAlignmentMode = .Center
+        label.position = CGPoint( x: 0.0, y: 0.0)
+        label.verticalAlignmentMode = .center
 //        CGRectGetMidX(ball.bounds),
 //                                      CGRectGetMidY(ball.bounds));
 
@@ -80,23 +80,23 @@ class GameScene: SKScene {
         let outerRadius = innerRadius + 10.0
         let startAngle = 0.0 * pi;
         let endAngle = 0.0001 * pi;
-        let startPoint = CGPointMake(innerRadius * cos(startAngle), innerRadius * sin(startAngle))
+        let startPoint = CGPoint(x: innerRadius * cos(startAngle), y: innerRadius * sin(startAngle))
 
 
-        bezierPath.moveToPoint(startPoint)
+        bezierPath.move(to: startPoint)
         // inner circle
-        bezierPath.addArcWithCenter(CGPointMake(0.0, 0.0), radius: innerRadius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+        bezierPath.addArc(withCenter: CGPoint(x: 0.0, y: 0.0), radius: innerRadius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
         //bezierPath.addLineToPoint(CGPointMake(110, 0.0))
         // outer circle
-        bezierPath.addArcWithCenter(CGPointMake(0.0, 0.0), radius: outerRadius
+        bezierPath.addArc(withCenter: CGPoint(x: 0.0, y: 0.0), radius: outerRadius
 , startAngle: endAngle, endAngle: startAngle, clockwise: true)
-        bezierPath.closePath()
+        bezierPath.close()
 
         return bezierPath
     }
 
     func angularImpulse() -> SKAction {
-        let waitAction = SKAction.waitForDuration(2.0)
+        let waitAction = SKAction.wait(forDuration: 2.0)
         let impulse = SKAction.applyAngularImpulse(0.7, duration: 3.0)
         let delayImpulse = SKAction.sequence([waitAction, impulse])
 
@@ -111,13 +111,13 @@ class ViewController: UIViewController {
 
         // add SKView
         do {
-            let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
             skView.showsFPS = true
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
-            let scene = GameScene(size: CGSizeMake(320, 480))
-            scene.scaleMode = .AspectFit
+            let scene = GameScene(size: CGSize(width: 320, height: 480))
+            scene.scaleMode = .aspectFit
             
             skView.presentScene(scene)
             self.view.addSubview(skView)

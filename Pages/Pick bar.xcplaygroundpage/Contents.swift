@@ -14,9 +14,9 @@ class GameScene: SKScene {
     var dragNode: SKNode?
     var dragJoint: SKPhysicsJointPin?
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         // SKScene의 경계에 physicsbody 설정
-        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         //self.physicsWorld.gravity = CGVectorMake(0, 0)
         self.physicsWorld.speed = 1
 
@@ -27,31 +27,31 @@ class GameScene: SKScene {
             ball.physicsBody?.restitution = 1.0
 
 
-            ball.fillColor = [#Color(colorLiteralRed: 0.2818343937397003, green: 0.5693024396896362, blue: 0.1281824260950089, alpha: 1)#]
-            ball.position = CGPointMake(160,400)
+            ball.fillColor = #colorLiteral(red: 0.2818343937397003, green: 0.5693024396896362, blue: 0.1281824260950089, alpha: 1)
+            ball.position = CGPoint(x: 160,y: 400)
         }
 
         // Make bar
-        let bar = SKSpriteNode(color: [#Color(colorLiteralRed: 0.9346159696578979, green: 0.6284804344177246, blue: 0.107728436589241, alpha: 1)#], size: CGSizeMake(100,20))
+        let bar = SKSpriteNode(color: #colorLiteral(red: 0.9346159696578979, green: 0.6284804344177246, blue: 0.107728436589241, alpha: 1), size: CGSize(width: 100,height: 20))
         do {
-            bar.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(100,20))
+            bar.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100,height: 20))
             //bar.physicsBody?.pinned = true
             //bar.physicsBody?.dynamic = false
             //bar.physicsBody?.allowsRotation = false
 
-            bar.position = CGPointMake(160, 20)
+            bar.position = CGPoint(x: 160, y: 20)
         }
 
         addChild(ball)
         addChild(bar)
     }
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // We only care about one touch at a time
         if let touch = touches.first {
             // Work out what node got touched
-            let touchPosition = touch.locationInNode(self)
-            let touchedNode = self.nodeAtPoint(touchPosition)
+            let touchPosition = touch.location(in: self)
+            let touchedNode = self.atPoint(touchPosition)
             // Make sure that we're touching something that _can_ be dragged
             if touchedNode == self.dragNode || touchedNode.physicsBody == nil {
                 return
@@ -60,34 +60,34 @@ class GameScene: SKScene {
             // Create the invisible drag node, with a small static body
             let newDragNode = SKNode()
             newDragNode.position = touchPosition
-            newDragNode.physicsBody = SKPhysicsBody(rectangleOfSize:CGSize(width: 10, height: 10))
-            newDragNode.physicsBody?.dynamic = false
+            newDragNode.physicsBody = SKPhysicsBody(rectangleOf:CGSize(width: 10, height: 10))
+            newDragNode.physicsBody?.isDynamic = false
             self.addChild(newDragNode)
 
             // Link this new node to the object that got touched
-            let newDragJoint = SKPhysicsJointPin.jointWithBodyA( touchedNode.physicsBody!, bodyB:newDragNode.physicsBody!, anchor:touchPosition)
-            self.physicsWorld.addJoint(newDragJoint)
+            let newDragJoint = SKPhysicsJointPin.joint( withBodyA: touchedNode.physicsBody!, bodyB:newDragNode.physicsBody!, anchor:touchPosition)
+            self.physicsWorld.add(newDragJoint)
             // Store the reference to the joint and the node
             self.dragNode = newDragNode
             self.dragJoint = newDragJoint
         }
     }
 
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             // When the touch moves, move the static drag node. 
             // The joint will drag the connected
             // object with it.
-            let touchPosition = touch.locationInNode(self)
+            let touchPosition = touch.location(in: self)
             self.dragNode?.position = touchPosition
         }
     }
 
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         stopDragging()
     }
 
-    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         stopDragging()
     }
 
@@ -105,15 +105,15 @@ class ViewController: UIViewController {
 
         // add SKView
         do {
-            let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
             skView.showsFPS = true
             // physics body를 보여준다.
             skView.showsPhysics = true
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
-            let scene = GameScene(size: CGSizeMake(320, 480))
-            scene.scaleMode = .AspectFit
+            let scene = GameScene(size: CGSize(width: 320, height: 480))
+            scene.scaleMode = .aspectFit
 
             skView.presentScene(scene)
             self.view.addSubview(skView)

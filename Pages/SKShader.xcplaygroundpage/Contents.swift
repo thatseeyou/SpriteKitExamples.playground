@@ -11,13 +11,13 @@ import GameplayKit
 class GameScene: SKScene {
     let bwShader = SKShader(fileNamed: "shader_bw.fsh")
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         // distribute small physics bobies
         for x in 0...10 {
             for y in 0...15 {
                 let orgX:CGFloat = 10.0
                 let orgY:CGFloat = 15.0
-                let random = GKRandomSource.sharedRandom().nextIntWithUpperBound(2)
+                let random = GKRandomSource.sharedRandom().nextInt(upperBound: 2)
 
                 let bShader = random > 0 ? true : false
 
@@ -26,11 +26,11 @@ class GameScene: SKScene {
         }
 
         self.physicsWorld.speed = 0.5
-        self.physicsWorld.gravity = CGVectorMake(0, 0)
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
 
     }
 
-    func addBall(position:CGPoint, hue:CGFloat, saturation:CGFloat, bShader:Bool) {
+    func addBall(_ position:CGPoint, hue:CGFloat, saturation:CGFloat, bShader:Bool) {
         let radius = CGFloat(5.0)
 
         let ball = SKShapeNode(circleOfRadius: radius)
@@ -57,13 +57,13 @@ class ViewController: UIViewController {
 
         // add SKView
         do {
-            let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
             skView.showsFPS = true
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
-            let scene = GameScene(size: CGSizeMake(320, 480))
-            scene.scaleMode = .AspectFit
+            let scene = GameScene(size: CGSize(width: 320, height: 480))
+            scene.scaleMode = .aspectFit
 
             skView.presentScene(scene)
             self.view.addSubview(skView)

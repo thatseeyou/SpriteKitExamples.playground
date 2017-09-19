@@ -8,32 +8,32 @@ import UIKit
 import SpriteKit
 
 class GameScene: SKScene {
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         // SKScene의 경계에 physicsbody 설정
-        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         //self.physicsWorld.gravity = CGVectorMake(0, 0)
         self.physicsWorld.speed = 2
 
         // Make ball
         let ball1 = ballWithRadius(10)
         do {
-            ball1.fillColor = [#Color(colorLiteralRed: 0.7540004253387451, green: 0, blue: 0.2649998068809509, alpha: 1)#]
-            ball1.position = CGPointMake(100,10)
-            ball1.physicsBody?.velocity = CGVectorMake(100, 0)
+            ball1.fillColor = #colorLiteral(red: 0.7540004253387451, green: 0, blue: 0.2649998068809509, alpha: 1)
+            ball1.position = CGPoint(x: 100,y: 10)
+            ball1.physicsBody?.velocity = CGVector(dx: 100, dy: 0)
         }
 
         let ball2 = ballWithRadius(20)
         do {
-            ball2.fillColor = [#Color(colorLiteralRed: 0.2818343937397003, green: 0.5693024396896362, blue: 0.1281824260950089, alpha: 1)#]
-            ball2.position = CGPointMake(100,100)
-            ball2.physicsBody?.velocity = CGVectorMake(0, 100)
+            ball2.fillColor = #colorLiteral(red: 0.2818343937397003, green: 0.5693024396896362, blue: 0.1281824260950089, alpha: 1)
+            ball2.position = CGPoint(x: 100,y: 100)
+            ball2.physicsBody?.velocity = CGVector(dx: 0, dy: 100)
         }
 
         let ball3 = ballWithRadius(30)
         do {
-            ball3.fillColor = [#Color(colorLiteralRed: 0.4120420813560486, green: 0.8022739887237549, blue: 0.9693969488143921, alpha: 1)#]
-            ball3.position = CGPointMake(110,400)
-            ball3.physicsBody?.velocity = CGVectorMake(0, -100)
+            ball3.fillColor = #colorLiteral(red: 0.4120420813560486, green: 0.8022739887237549, blue: 0.9693969488143921, alpha: 1)
+            ball3.position = CGPoint(x: 110,y: 400)
+            ball3.physicsBody?.velocity = CGVector(dx: 0, dy: -100)
         }
 
         addChild(ball1)
@@ -41,7 +41,7 @@ class GameScene: SKScene {
         addChild(ball3)
     }
 
-    func ballWithRadius(radius:CGFloat) -> SKShapeNode {
+    func ballWithRadius(_ radius:CGFloat) -> SKShapeNode {
         let ballShape = SKShapeNode(circleOfRadius: radius)
         do {
             ballShape.physicsBody = SKPhysicsBody(circleOfRadius: radius)
@@ -76,13 +76,13 @@ class ViewController: UIViewController {
 
         // add SKView
         do {
-            let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
             skView.showsFPS = true
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
-            let scene = GameScene(size: CGSizeMake(320, 480))
-            scene.scaleMode = .AspectFit
+            let scene = GameScene(size: CGSize(width: 320, height: 480))
+            scene.scaleMode = .aspectFit
 
             skView.presentScene(scene)
             self.view.addSubview(skView)

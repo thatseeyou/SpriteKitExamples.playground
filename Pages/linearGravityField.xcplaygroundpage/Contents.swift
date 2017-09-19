@@ -10,7 +10,7 @@ class GameScene: SKScene {
     var contentCreated = false
     let pi:CGFloat = CGFloat(M_PI)
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         if self.contentCreated != true {
 
             // distribute small physics bobies
@@ -31,7 +31,7 @@ class GameScene: SKScene {
                 shapeNode.position = position
                 addChild(shapeNode)
 
-                let field = SKFieldNode.linearGravityFieldWithVector(vector_float3(0.0, 9.0, 1.0))
+                let field = SKFieldNode.linearGravityField(withVector: vector_float3(0.0, 9.0, 1.0))
                 field.position = position
 
                 field.region = SKRegion(radius: radius)
@@ -40,13 +40,13 @@ class GameScene: SKScene {
             }
 
             self.physicsWorld.speed = 0.5
-            self.physicsWorld.gravity = CGVectorMake(0, 0)
+            self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
 
             self.contentCreated = true
         }
     }
 
-    func addBall(position:CGPoint, hue:CGFloat, saturation:CGFloat) {
+    func addBall(_ position:CGPoint, hue:CGFloat, saturation:CGFloat) {
         let radius = CGFloat(5.0)
 
         let ball = SKShapeNode(circleOfRadius: radius)
@@ -57,7 +57,7 @@ class GameScene: SKScene {
         ball.physicsBody?.mass = 1.0
         ball.physicsBody?.linearDamping = 0.5
 
-        ball.strokeColor = UIColor.clearColor()
+        ball.strokeColor = UIColor.clear
         ball.fillColor = UIColor(hue: hue, saturation: saturation, brightness: 1.0, alpha: 1.0)
 
         addChild(ball)
@@ -71,14 +71,14 @@ class ViewController: UIViewController {
 
         // add SKView
         do {
-            let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
             skView.showsFPS = true
             //skView.showsNodeCount = true
             skView.showsFields = true
             skView.ignoresSiblingOrder = true
 
-            let scene = GameScene(size: CGSizeMake(320, 480))
-            scene.scaleMode = .AspectFit
+            let scene = GameScene(size: CGSize(width: 320, height: 480))
+            scene.scaleMode = .aspectFit
             
             skView.presentScene(scene)
             self.view.addSubview(skView)

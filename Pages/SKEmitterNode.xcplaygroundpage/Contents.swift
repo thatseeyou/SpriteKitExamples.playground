@@ -8,10 +8,10 @@ import SpriteKit
 class GameScene: SKScene {
     var contentCreated = false
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         if self.contentCreated != true {
             let fireNode = SKEmitterNode(fileNamed: "Fire.sks")!
-            fireNode.position = CGPointMake(self.frame.midX, self.frame.midY)
+            fireNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
             addChild(fireNode)
 
             self.contentCreated = true
@@ -26,13 +26,13 @@ class ViewController: UIViewController {
 
         // add SKView
         do {
-            let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
             skView.showsFPS = true
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
-            let scene = GameScene(size: CGSizeMake(320, 480))
-            scene.scaleMode = .AspectFit
+            let scene = GameScene(size: CGSize(width: 320, height: 480))
+            scene.scaleMode = .aspectFit
 
             skView.presentScene(scene)
             self.view.addSubview(skView)

@@ -7,9 +7,9 @@ import SpriteKit
 class Scene1: SKScene {
     var contentCreated = false
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         if self.contentCreated != true {
-            self.backgroundColor = [#Color(colorLiteralRed: 1, green: 0.9999743700027466, blue: 0.9999912977218628, alpha: 1)#]
+            self.backgroundColor = #colorLiteral(red: 1, green: 0.9999743700027466, blue: 0.9999912977218628, alpha: 1)
 
             let transitionNames = [
                 "crossFadeWithDuration",
@@ -28,11 +28,11 @@ class Scene1: SKScene {
                 "transitionWithCIFilter"
             ]
 
-            for (i, name) in transitionNames.enumerate() {
+            for (i, name) in transitionNames.enumerated() {
                 let label = SKLabelNode(text: name)
-                label.fontColor = [#Color(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1)#]
+                label.fontColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                 label.fontSize = 25
-                label.position = CGPointMake(160, CGFloat(i * 30) + 14)
+                label.position = CGPoint(x: 160, y: CGFloat(i * 30) + 14)
                 label.name = name
                 addChild(label)
             }
@@ -41,14 +41,14 @@ class Scene1: SKScene {
         }
     }
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            let location = touch.locationInNode(self)
-            let nodes = nodesAtPoint(location)
+            let location = touch.location(in: self)
+            let nodes = self.nodes(at: location)
 
             for node in nodes {
                 guard node.name != nil else { continue }
-            NSNotificationCenter.defaultCenter().postNotificationName("transition", object: self, userInfo: ["name": node.name!])
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "transition"), object: self, userInfo: ["name": node.name!])
             }
         }
     }
@@ -56,7 +56,7 @@ class Scene1: SKScene {
 
 class ViewController: UIViewController {
     override func loadView() {
-        self.view = SKView(frame: CGRectMake(0, 0, 320, 480))
+        self.view = SKView(frame: CGRect(x: 0, y: 0, width: 320, height: 480))
     }
 
     override func viewDidLoad() {
@@ -69,8 +69,8 @@ class ViewController: UIViewController {
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
-            let scene = Scene1(size: CGSizeMake(320, 480))
-            scene.scaleMode = .AspectFit
+            let scene = Scene1(size: CGSize(width: 320, height: 480))
+            scene.scaleMode = .aspectFit
 
             skView.presentScene(scene)
         }
@@ -80,10 +80,10 @@ class ViewController: UIViewController {
     }
 
     func addObservers() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.transition(_:)), name: "transition", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.transition(_:)), name: "transition", object: nil)
     }
 
-    func transition(notification: NSNotification) {
+    func transition(_ notification: Notification) {
         let transitionName = notification.userInfo!["name"] as! String
         print("\(transitionName)")
 
@@ -91,31 +91,31 @@ class ViewController: UIViewController {
 
         switch transitionName {
         case "crossFadeWithDuration":
-            transition = SKTransition.crossFadeWithDuration(3.0)
+            transition = SKTransition.crossFade(withDuration: 3.0)
         case "doorsCloseHorizontalWithDuration":
-            transition = SKTransition.doorsCloseHorizontalWithDuration(3.0)
+            transition = SKTransition.doorsCloseHorizontal(withDuration: 3.0)
         case "doorsCloseVerticalWithDuration":
-            transition = SKTransition.doorsCloseVerticalWithDuration(3.0)
+            transition = SKTransition.doorsCloseVertical(withDuration: 3.0)
         case "doorsOpenHorizontalWithDuration":
-            transition = SKTransition.doorsOpenHorizontalWithDuration(3.0)
+            transition = SKTransition.doorsOpenHorizontal(withDuration: 3.0)
         case "doorsOpenVerticalWithDuration":
-            transition = SKTransition.doorsOpenVerticalWithDuration(3.0)
+            transition = SKTransition.doorsOpenVertical(withDuration: 3.0)
         case "doorwayWithDuration":
-            transition = SKTransition.doorwayWithDuration(3.0)
+            transition = SKTransition.doorway(withDuration: 3.0)
         case "fadeWithColor":
-            transition = SKTransition.fadeWithColor(UIColor.greenColor(), duration: 3.0)
+            transition = SKTransition.fade(with: UIColor.green, duration: 3.0)
         case "fadeWithDuration":
-            transition = SKTransition.fadeWithDuration(3.0)
+            transition = SKTransition.fade(withDuration: 3.0)
         case "flipHorizontalWithDuration":
-            transition = SKTransition.flipHorizontalWithDuration(3.0)
+            transition = SKTransition.flipHorizontal(withDuration: 3.0)
         case "flipVerticalWithDuration":
-            transition = SKTransition.flipVerticalWithDuration(3.0)
+            transition = SKTransition.flipVertical(withDuration: 3.0)
         case "moveInWithDirection":
-            transition = SKTransition.moveInWithDirection(.Down, duration: 3.0)
+            transition = SKTransition.moveIn(with: .down, duration: 3.0)
         case "pushWithDirection":
-            transition = SKTransition.pushWithDirection(.Up, duration: 3.0)
+            transition = SKTransition.push(with: .up, duration: 3.0)
         case "revealWithDirection":
-            transition = SKTransition.revealWithDirection(.Left, duration: 3.0)
+            transition = SKTransition.reveal(with: .left, duration: 3.0)
         case "transitionWithCIFilter":
             //transition = SKTransition.transition
             break
@@ -126,9 +126,9 @@ class ViewController: UIViewController {
         transitionToNewScene(transition)
     }
 
-    func transitionToNewScene(transition:SKTransition) {
+    func transitionToNewScene(_ transition:SKTransition) {
         let skView = self.view as! SKView
-        let scene = Scene1(size: CGSizeMake(320, 480))
+        let scene = Scene1(size: CGSize(width: 320, height: 480))
 
         skView.presentScene(scene, transition: transition)
     }

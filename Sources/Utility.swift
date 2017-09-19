@@ -1,6 +1,6 @@
 import Foundation
 
-public class Utility
+open class Utility
 {
 
 /** run closure after given seconds
@@ -8,10 +8,10 @@ public class Utility
 - parameter second: delayed time (seconds)
 - parameter action: action to run
 */
-    public class func runActionAfterTime(second:Float, action:() -> Void) {
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(second) * Double(NSEC_PER_SEC)))
+    open class func runActionAfterTime(_ second:Double, action:@escaping () -> Void) {
+        let delayTime = DispatchTime.now() + second
         
-        dispatch_after(delayTime, dispatch_get_main_queue(), action)
+        DispatchQueue.main.asyncAfter(deadline: delayTime, execute: action)
     }
 
 }

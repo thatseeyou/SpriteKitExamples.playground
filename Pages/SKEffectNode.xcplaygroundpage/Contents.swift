@@ -7,18 +7,18 @@ import SpriteKit
 class GameScene: SKScene {
     var contentCreated = false
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         if self.contentCreated != true {
-            let shape1 = SKShapeNode(path: makeBezierPath().CGPath)
+            let shape1 = SKShapeNode(path: makeBezierPath().cgPath)
             do {
-                shape1.strokeColor = SKColor.greenColor()
-                shape1.fillColor = SKColor.redColor()
-                shape1.position = CGPointMake(self.frame.midX, self.frame.midY + 100)
+                shape1.strokeColor = SKColor.green
+                shape1.fillColor = SKColor.red
+                shape1.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 100)
             }
 
             let shape2 = shape1.copy() as! SKShapeNode
             do {
-                shape2.position = CGPointMake(self.frame.midX, self.frame.midY - 100)
+                shape2.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 100)
             }
 
             let effect = SKEffectNode()
@@ -52,13 +52,13 @@ class ViewController: UIViewController {
 
         // add SKView
         do {
-            let skView = SKView(frame:CGRectMake(0, 0, 320, 480))
+            let skView = SKView(frame:CGRect(x: 0, y: 0, width: 320, height: 480))
             skView.showsFPS = true
             //skView.showsNodeCount = true
             skView.ignoresSiblingOrder = true
 
-            let scene = GameScene(size: CGSizeMake(320, 480))
-            scene.scaleMode = .AspectFit
+            let scene = GameScene(size: CGSize(width: 320, height: 480))
+            scene.scaleMode = .aspectFit
 
             skView.presentScene(scene)
             self.view.addSubview(skView)
